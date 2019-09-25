@@ -1,6 +1,6 @@
 import React from "react";
 
-const Date = props => {
+const PhotoDate = props => {
   if (!props.nasaData.date) {
     return <h3>Loading...</h3>;
   }
@@ -8,4 +8,4 @@ const Date = props => {
   return <h5 className="card-text">{props.nasaData.date}</h5>;
 };
 
-export default Date;
+export default PhotoDate;

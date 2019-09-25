@@ -2,7 +2,12 @@ import React from "react";
 
 const Photo = props => {
   if (props.nasaData.hdurl) {
+    let copyright = '';
+    if (props.nasaData.copyright) {
+      copyright = `Image copyright: ${props.nasaData.copyright}`;
+    }
     return (
+      <div>
       <a href="#image-modal" data-toggle="modal">
         <img
           src={props.nasaData.hdurl}
@@ -10,6 +15,8 @@ const Photo = props => {
           className="card-img-top"
         />
       </a>
+      <p>{copyright}</p>
+      </div>
     );
   } else if (props.nasaData.url) {
     return (
