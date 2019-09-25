@@ -1,3 +1,18 @@
 .App {
-  
+ text-align: center;
+}
+
+.card {
+  width: 55%;
+  margin: 40px auto;
+  background-color: #E8E8E8;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.modal-dialog {
+  max-width: 100vw;
 }
