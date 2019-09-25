@@ -7,12 +7,9 @@ const Date = props => {
     return <h3>Loading...</h3>;
   }
 
-  let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  let date = props.date.toLocaleString("en-US", options);
-
   return (
     <p className="card-text">
-      <strong>{date}</strong>
+      <strong>{props.date}</strong>
     </p>
   )
 }
