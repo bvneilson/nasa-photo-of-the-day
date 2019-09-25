@@ -1,17 +1,11 @@
 import React from "react";
 
-
 const Date = props => {
-
   if (!props.date) {
     return <h3>Loading...</h3>;
   }
 
-  return (
-    <p className="card-text">
-      <strong>{props.date}</strong>
-    </p>
-  )
-}
+  return <h5 className="card-text">{props.date}</h5>;
+};
 
 export default Date;

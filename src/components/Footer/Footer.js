@@ -9,6 +9,6 @@ const Footer = () => {
       <p>&copy;{year} Brennan Neilson</p>
     </div>
   );
-}
+};
 
 export default Footer;
