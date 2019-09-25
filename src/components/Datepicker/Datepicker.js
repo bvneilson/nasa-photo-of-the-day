@@ -18,15 +18,6 @@ const Datepicker = props => {
             )
             .then(res => {
               props.setNasaData(res.data);
-              if (res.data.media_type === "image") {
-                props.setPicture(res.data.hdurl);
-              } else {
-                props.setPicture("");
-                props.setVideoUrl(res.data.url);
-              }
-              props.setDate(res.data.date);
-              props.setSummary(res.data.explanation);
-              props.setTitle(res.data.title);
               console.log(res.data);
             })
             .catch(err => {
