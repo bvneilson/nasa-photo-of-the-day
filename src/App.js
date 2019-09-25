@@ -3,6 +3,7 @@ import axios from "axios";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import '../node_modules/jquery/dist/jquery.min.js'
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
+import "../node_modules/video-react/dist/video-react.css";
 import "./App.css";
 import Header from "./components/Header/Header.js"
 import Photo from "./components/Photo/Photo.js"
@@ -16,6 +17,8 @@ function App() {
 
   const [nasaData, setNasaData] = useState();
   const [picture, setPicture] = useState();
+  const [videoUrl, setVideoUrl] = useState();
+  const [title, setTitle] = useState();
   const [date, setDate] = useState();
   const [summary, setSummary] = useState();
   const [selectDate, setSelectDate] = useState();
@@ -25,7 +28,11 @@ function App() {
 
     axios.get(axiosUrl).then(res => {
       setNasaData(res.data);
-      setPicture(res.data.hdurl);
+      if (res.data.media_type === 'image') {
+        setPicture(res.data.hdurl);
+      } else {
+        setVideoUrl(res.data.url);
+      }
       setDate(res.data.date);
       setSummary(res.data.explanation);
       console.log(res.data);
@@ -44,12 +51,10 @@ function App() {
       <Header />
       <div className="row">
         <div className="col-md-2">
-          <Datepicker selectDate={selectDate} setSelectDate={setSelectDate} setNasaData={setNasaData} setPicture={setPicture} setDate={setDate} setSummary={setSummary} />
+          <Datepicker selectDate={selectDate} setSelectDate={setSelectDate} setNasaData={setNasaData} setPicture={setPicture} setDate={setDate} setSummary={setSummary} setVideoUrl={setVideoUrl} />
         </div>
         <div className="card photo col-md-8">
-          <a href="#image-modal" data-toggle="modal">
-            <Photo picture={picture} />
-          </a>
+          <Photo picture={picture} videoUrl={videoUrl} />
           <div className="card-body">
             <Date date={date} />
             <Summary summary={summary} />
@@ -57,7 +62,7 @@ function App() {
         </div>
       </div>
       <Footer />
-      <Modal picture={picture} />
+      <Modal picture={picture} videoUrl={videoUrl} />
     </div>
   );
 }

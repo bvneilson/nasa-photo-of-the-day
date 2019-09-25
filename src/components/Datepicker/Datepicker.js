@@ -11,7 +11,12 @@ const Datepicker = props => {
       <DatePicker selected={props.selectDate} onChange={date => {
           axios.get(`https://api.nasa.gov/planetary/apod?api_key=aSw2gAHouRUnnw4sqxCAepY9kSviDYHQpxGPcxGl&date=${date.toISOString().substring(0, 10)}`).then(res => {
             props.setNasaData(res.data);
-            props.setPicture(res.data.hdurl);
+            if (res.data.media_type === 'image') {
+              props.setPicture(res.data.hdurl);
+            } else {
+              props.setPicture('');
+              props.setVideoUrl(res.data.url);
+            }
             props.setDate(res.data.date);
             props.setSummary(res.data.explanation);
             console.log(res.data);

@@ -11,7 +11,7 @@ const Modal = props => {
             <button type="button" className="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span className="sr-only">Close</span></button>
           </div>
           <div className="modal-body">
-            <Photo picture={props.picture} />
+            <Photo picture={props.picture} videoUrl={props.videoUrl} />
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
